@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="email">
+        <item>123@gmail.com</item>
+        <item>1@gmail.com</item>
+        <item>2@gmail.com</item>
+        <item>3@gmail.com</item>
+        <item>4@gmail.com</item>
+    </string-array>
+
+    <string-array name="password">
+        <item>123</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+    </string-array>
+</resources>

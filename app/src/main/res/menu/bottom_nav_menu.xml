@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navigation_recipes"
+        android:icon="@drawable/ic_baseline_list_alt_24"
+        android:title="@string/title_recipes" />
+
+    <item
+        android:id="@+id/navigation_selected_recipe"
+        android:icon="@drawable/ic_baseline_food_bank_24"
+        android:title="@string/title_selected_recipe" />
+
+</menu>

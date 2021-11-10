@@ -1,0 +1,41 @@
+<resources>
+    <string name="app_name">Laba1</string>
+    <string name="title_activity_main2">MainActivity2</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="title_recipes">Recipes</string>
+    <string name="title_selected_recipe">Selected recipe</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Не выбран рецепт</string>
+
+    <string-array name="recycler_data">
+        <item>Гречка</item>
+        <item>Овсянка</item>
+        <item>Яичница</item>
+        <item>Пельмени</item>
+        <item>Вареники</item>
+        <item>Пюре</item>
+        <item>Рис</item>
+        <item>Макароны по-флотски</item>
+        <item>Спагети</item>
+        <item>Филе куриное</item>
+        <item>Плов</item>
+        <item>Мраморная говядина</item>
+        <item>Ребро куриное</item>
+        <item>Пицца</item>
+        <item>Роллы</item>
+        <item>Рецепт 15</item>
+        <item>Рецепт 16</item>
+        <item>Рецепт 17</item>
+        <item>Рецепт 18</item>
+        <item>Рецепт 19</item>
+        <item>Рецепт 20</item>
+        <item>Рецепт 21</item>
+        <item>Рецепт 22</item>
+        <item>Рецепт 23</item>
+        <item>Рецепт 24</item>
+        <item>Рецепт 25</item>
+    </string-array>
+
+</resources>
