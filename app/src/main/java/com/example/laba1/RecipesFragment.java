@@ -6,13 +6,24 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.Arrays;
 import java.util.List;
+import java.util.List;
+
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -75,6 +86,15 @@ public class RecipesFragment extends Fragment {
         mRecyclerView.setHasFixedSize(true);
         mLayoutManager = new GridLayoutManager(view.getContext(), 2);
         mRecyclerView.setLayoutManager(mLayoutManager);
+
+        String urlStr = "https://raw.githubusercontent.com/Lpirskaya/JsonLAb/master/recipes.json";
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(urlStr)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+
 
         String[] myString = getResources().getStringArray(R.array.recycler_data);
         List<String> recyclerData = Arrays.asList(myString);
