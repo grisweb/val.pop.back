@@ -1,40 +1,40 @@
 package com.example.laba1;
 
 public class Recipe {
-    private int calorie;
-    private int time;
-    private String name;
-    private String ingredients;
+    private int Calorie;
+    private int Time;
+    private String Name;
+    private String Ingredients;
 
     public int getCalorie() {
-        return calorie;
+        return Calorie;
     }
 
     public void setCalorie(int calorie) {
-        this.calorie = calorie;
+        this.Calorie = calorie;
     }
 
     public int getTime() {
-        return time;
+        return Time;
     }
 
     public void setTime(int time) {
-        this.time = time;
+        this.Time = time;
     }
 
     public String getName() {
-        return name;
+        return Name;
     }
 
     public void setName(String name) {
-        this.name = name;
+        this.Name = name;
     }
 
     public String getIngredients() {
-        return ingredients;
+        return Ingredients;
     }
 
     public void setIngredients(String ingredients) {
-        this.ingredients = ingredients;
+        this.Ingredients = ingredients;
     }
 }

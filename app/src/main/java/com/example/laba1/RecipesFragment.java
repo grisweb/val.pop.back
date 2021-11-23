@@ -18,10 +18,14 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.List;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
@@ -43,6 +47,10 @@ public class RecipesFragment extends Fragment {
 
     private RecyclerView mRecyclerView;
     private RecyclerView.LayoutManager mLayoutManager;
+
+    private List<Recipe> content;
+
+    private List<String> recyclerData = new ArrayList<>();
 
     public RecipesFragment() {
         // Required empty public constructor
@@ -87,20 +95,50 @@ public class RecipesFragment extends Fragment {
         mLayoutManager = new GridLayoutManager(view.getContext(), 2);
         mRecyclerView.setLayoutManager(mLayoutManager);
 
-        String urlStr = "https://raw.githubusercontent.com/Lpirskaya/JsonLAb/master/recipes.json";
+        Thread thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
 
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(urlStr)
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
+                String urlStr = "https://raw.githubusercontent.com/Pec3maker/android_labs/main/JsonLab/";
+
+                Retrofit retrofit = new Retrofit.Builder()
+                        .baseUrl(urlStr)
+                        .addConverterFactory(GsonConverterFactory.create())
+                        .build();
+
+                RecipeApi recipeApi = retrofit.create(RecipeApi.class);
+
+                Call<List<Recipe>> recipes = recipeApi.recipes();
+
+                recipes.enqueue(new Callback<List<Recipe>>() {
+                    @Override
+                    public void onResponse(Call<List<Recipe>> call, Response<List<Recipe>> response) {
+                        if (response.isSuccessful()) {
+                            List<Recipe> recipeList = response.body();
+
+                            recyclerData.clear();
+                            for (Recipe item : recipeList) {
+                                recyclerData.add(item.getName());
+                            }
+                        } else {
+                            Log.i("response code", Integer.toString(response.code()));
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<List<Recipe>> call, Throwable t) {
+                        //log("failure " + t);
+                    }
+                });
 
 
+            }
+        });
+// Запускаем поток
+        thread.start();
 
-        String[] myString = getResources().getStringArray(R.array.recycler_data);
-        List<String> recyclerData = Arrays.asList(myString);
-        //MyRecyclerViewAdapter mAdapter = new MyRecyclerViewAdapter(recyclerData);
-
-        mRecyclerView.setAdapter(new MyRecyclerViewAdapter(recyclerData));
+        //String[] myString = getResources().getStringArray(R.array.recycler_data);
+        //List<String> recyclerData = Arrays.asList(myString)
 
         //TextView myTextView = view.findViewById(R.id.textView);
 
